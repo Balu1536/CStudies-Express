@@ -1,12 +1,18 @@
 const express = require('express');
 const app = express();
 const port = 3000;
+app.use(express.json());
+
+
+
+
+
 
 // Route for the homepage for 1,2 case studies
 // app.get('/', (req, res) => {
 // res.send('Welcome to Greenfield Community Center!');
 // });
-app.use(express.json());
+
 
 // //case study1. routes to classes and contacts
 // const classesRouter = require('./routes/classes');
@@ -29,6 +35,14 @@ app.use("/products", productsRouter);
 app.get("/", (req, res) => {
   res.send("Neighborhood Food Store API");
 });
+
+
+
+
+
+
+
+
 
 
 // Start the server
