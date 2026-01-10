@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>POST Test</title>
+</head>
+<body>
+  <h2>Test POST /loyalty/transfer</h2>
+
+  <button onclick="sendPost()">Send POST</button>
+
+  <pre id="result"></pre>
+
+  <script>
+    function sendPost() {
+      fetch("/loyalty/transfer", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          fromCustomerId: "550e8400-e29b-41d4-a716-446655440000",
+          toCustomerId: "6ba7b810-9dad-41d1-80b4-00c04fd430c8",
+          points: 50
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("result").innerText =
+          JSON.stringify(data, null, 2);
+      })
+      .catch(err => {
+        document.getElementById("result").innerText = err;
+      });
+    }
+  </script>
+</body>
+</html>
